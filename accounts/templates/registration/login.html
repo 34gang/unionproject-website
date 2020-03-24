@@ -1,0 +1,71 @@
+{% extends 'templates/base.html' %}
+{% block body_block %}
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Login</title>
+<style>
+
+body {
+                  background: url(/static/bgacc.jpg) no-repeat center center fixed;
+                -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+        .middle{
+            text-align: center;
+        }
+        .par {
+            font-size: 20px;
+        }
+        *[role="form"] {
+    max-width: 530px;
+    padding: 15px;
+    margin: 0 auto;
+    border-radius: 0.3em;
+    background-color: #f2f2f2;
+}
+
+*[role="form"] h2 {
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 5%;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;}
+</style>
+    {% if user.is_active %}
+        <div class="container">
+        <div style="text-align: center">
+        <form class="form-horizontal" role="form">
+    <h1>Terima Kasih telah login!</h1>
+
+<a href="{% url 'logout' %}">
+        <button href="{% url 'logout' %}" class="btn btn-primary">Logout</button>
+</a>
+        <a href="{% url 'utama' %}">
+    <button class="btn btn-primary" type="button">Kembali</button>
+</a>
+        </form>
+        </div>
+</div>
+    {% else %}
+        <div class="container">
+    <div class="jumbotron">
+      <h1 style="text-align: center">Login Disini :</h1>
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+          {# A more "HTML" way of creating the login form#}
+          <label for="username">Username:</label>
+            <p><input type="text" name="username" placeholder="Nama Pengguna"></p>
+<label for="password">Password:</label>
+            <p><input type="password" name="password" placeholder="Password"></p>
+<input type="submit" name="" value="Login">
+</form>
+</div>
+  </div>
+    {% endif %}
+{% endblock %}

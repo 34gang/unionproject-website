@@ -1,0 +1,43 @@
+{% extends "templates/base.html" %}
+{% load static %}{% block body_block %}
+    <title>Daftar</title>
+    <style>
+              body{background: url(/static/bgindex.jpg) no-repeat center center fixed;
+                -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;}
+    </style>
+  <div class="container">
+    <div class="jumbotron">
+      {% if registered %}
+          <div style="text-align: center;color: black">
+        <h1>Terima Kasih telah mendaftar! Sekarang anda resmi menjadi bagian dari Union!</h1>
+              <p>Karena website ini masih dalam pengembangan, jadi untuk sekarang tidak ada kegiatan disini. Pendaftaran disini dibutuhkan hanya untuk menyimpan data anda pada database. Mintalah Kode QR pada @rahmandoki, divisi
+            IT Union. Setelah itu, minta juga untuk dimasukkan ke dalam grup. Anda akan dimasukkan ke dalam grup secara langsung tanpa
+            perlu meminta bila Rahman sudah melihat pendaftaran anda. Namun, untuk mempercepat, mintalah dengan men-DM Instagram yang tadi disebutkan atau
+            hubungi line @rahmanhakim2435.</p>
+              <a  href="{% url 'utama' %}"><button class="btn btn-primary">Home</button></a>
+              <a  href="{% url 'dasbor' %}"><button class="btn btn-primary">Dasbor</button></a>
+          </div>
+          {% elif user.is_active %}
+          <div style="text-align: center">
+          <h1>Terima Kasih. Anda Telah Terdaftar</h1>
+          <a href="{% url 'utama' %}">
+              <button class="btn btn-default" type="button">Kembali</button>
+          </a>
+          </div>
+      {% else %}
+        <h1 style="text-align: center">Daftar</h1>
+        <h3 style="text-align: center">Isi data diri dengan benar</h3>
+          <form enctype="multipart/form-data" method="POST">
+          {% csrf_token %}
+              {{ user_form.as_p }}
+              {{ profile_form.as_p }}
+          <input type="submit" name="" value="Register">
+        </form>
+
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
