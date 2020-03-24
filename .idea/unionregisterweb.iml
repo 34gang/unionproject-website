@@ -14,9 +14,10 @@
   </component>
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$/../unionregisterweb">
+      <excludeFolder url="file://$MODULE_DIR$/../unionregisterweb/unionenv" />
       <excludeFolder url="file://$MODULE_DIR$/../unionregisterweb/venv" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.6 (unionregisterweb) (3)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">

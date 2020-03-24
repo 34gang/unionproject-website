@@ -1,10 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, User
-from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
 from short_text_field.models import ShortTextField
-from django.contrib.auth import get_user_model
-from django.conf import settings
 
 class UserProfileInfo(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
