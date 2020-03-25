@@ -68,8 +68,8 @@ def user_login(request):
         return render(request, 'accounts/templates/registration/login.html', {})
 
 def dasbor(request):
-    dash = User.objects.all()
-    dash2 = UserProfileInfo.objects.all()
+    dash = request.user
+    dash2 = request.user
     return render(request, 'accounts/templates/dashboard.html', locals())
 
 
