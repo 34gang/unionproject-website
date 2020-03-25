@@ -1,4 +1,4 @@
-#!/home/mochida/PycharmProjects/unionregisterweb/unionenv/bin/python
+#!/home/mochida/PycharmProjects/unionregisterweb/djangoenv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

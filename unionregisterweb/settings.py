@@ -16,19 +16,17 @@ import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 # SECRET KEY 1 c45bd47b6301fd89a399348d9a20cf6cdec1e25fdd3ca36b057d93e789d73e72
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'fxu3r2$+f5q)6hreh^3jdmr&t*=3!bb^+gza4@!4p^&i3ffxk1'
+# SECRET_KEY = 'fxu3r2$+f5q)6hreh^3jdmr&t*=3!bb^+gza4@!4p^&i3ffxk1'
 SECRET_KEY = 'c45bd47b6301fd89a399348d9a20cf6cdec1e25fdd3ca36b057d93e789d73e72'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['unionproject.herokuapp.com']
-
 
 # Application definition
 
@@ -43,8 +41,12 @@ INSTALLED_APPS = [
     'crispy_forms',
     'short_text_field',
     'phonenumber_field',
+    'blog',
+    'django_summernote',
+    'cuser',
 ]
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,7 +57,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-
+    'cuser.middleware.CuserMiddleware',
 ]
 
 ROOT_URLCONF = 'unionregisterweb.urls'
@@ -63,7 +65,7 @@ ROOT_URLCONF = 'unionregisterweb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR,'templates']
+        'DIRS': [BASE_DIR, 'templates']
         ,
         'APP_DIRS': True,
         'OPTIONS': {
@@ -79,7 +81,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'unionregisterweb.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
@@ -88,10 +89,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'uniondb',
         'USER': 'root',
-        'PASSWORD':'AlMulk67'
+        'PASSWORD': 'AlMulk67'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -123,21 +123,19 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static')
+    os.path.join(BASE_DIR, 'static')
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
 REGISTER_URL = '/register/'
 
 django_heroku.settings(locals())

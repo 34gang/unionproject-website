@@ -1,4 +1,4 @@
-#!/home/mochida/PycharmProjects/unionregisterweb/unionenv/bin/python
+#!/home/mochida/PycharmProjects/unionregisterweb/djangoenv/bin/python
 from django.core import management
 
 if __name__ == "__main__":
