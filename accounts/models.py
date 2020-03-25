@@ -8,7 +8,7 @@ class UserProfileInfo(models.Model):
     Nama_Depan = models.CharField(max_length=40, default="",blank=False)
     Nama_Belakang = models.CharField(max_length=40, default="",blank=False)
     Alamat_Email = models.EmailField()
-    Tanggal_Lahir = models.DateField(default="", blank=False, help_text="Masukkan dalam format MM/DD/YYYY. Contoh: 01/01/2000", error_messages="Tanggal Lahir harus dalam format Bulan/Tanggal/Tahun dan berbentuk angka semua. Jangan lupa untuk menambahkan /. Contoh: 01/01/2000")
+    Tanggal_Lahir = models.DateField(default="", blank=False, help_text="Masukkan dalam format MM/DD/YYYY. Contoh: 01/01/2000", unique=True, error_messages={'unique':"Tanggal Lahir harus dalam format Bulan/Tanggal/Tahun dan berbentuk angka semua. Jangan lupa untuk menambahkan /. Contoh: 01/01/2000"})
     kota = ShortTextField(default='', blank=False, help_text="Masukkan nama kota dengan benar")
     GENDER_CHOICES = (('Laki-laki', 'Laki-laki'), ('Perempuan', 'Perempuan'))
     Jenis_Kelamin = models.CharField(choices=GENDER_CHOICES, max_length=10, blank=False)
