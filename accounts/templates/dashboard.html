@@ -9,7 +9,7 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <head>
     <meta charset="UTF-8">
-    <title>{{ user }}</title>
+    <title>Dasbor {{ user }}</title>
     <style>
         body{
                           background: url(/static/bg13.jpeg) no-repeat center center fixed;
@@ -50,7 +50,7 @@
 <div class="container">
     <div class="form-group">
 <form class="form-horizontal" role="form" method="POST">
-<h1>Halo, {{ user }} apa kabarmu?</h1>
+<h1>Halo, {{ user.userprofileinfo.Nama_Depan }} apa kabarmu?</h1>
     <p>Nama Lengkap: {{ user.userprofileinfo.Nama_Depan }} {{ user.userprofileinfo.Nama_Belakang }}</p>
     <p>Alamat Email: {{ user.userprofileinfo.Alamat_Email }}</p>
     <p>Tanggal Lahir: {{ user.userprofileinfo.Tanggal_Lahir }}</p>
