@@ -50,17 +50,7 @@
     <div class="form-group">
 <form class="form-horizontal" role="form" method="POST">
 <h1>Halo, {{ user }} apa kabarmu?</h1>
-{% for item in dash2 %}
-    <p>Nama Lengkap: {{ item.Nama_Depan }} {{ item.Nama_Belakang }}</p>
-    <p>Alamat Email: {{ item.Alamat_Email }}</p>
-    <p>Tanggal Lahir: {{ item.Tanggal_Lahir }}</p>
-    <p>Kota: {{ item.kota }}</p>
-    <p>Jenis Kelamin: {{ item.Jenis_Kelamin }}</p>
-    <p>Nomor HP: {{ item.Nomor_HP }}</p>
-    <p>Akun Instagram: {{ item.Akun_Instagram }}</p>
-    <p>Bio: {{ item.bio }}</p>
-    {% endfor %}
-    <p>Tanggal Bergabung: {{ user.date_joined }}</p>
+<p>Dasbor dalam perbaikan</p>
 <div style="text-align: center">
 <a href="{% url 'utama' %}">
     <button class="btn btn-default" type="button">Kembali</button>
