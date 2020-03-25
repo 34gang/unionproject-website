@@ -17,7 +17,7 @@ def special(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return HttpResponseRedirect(reverse('home'))
+    return HttpResponseRedirect(reverse('utama'))
 
 
 def register(request):
@@ -68,6 +68,6 @@ def user_login(request):
         return render(request, 'accounts/templates/registration/login.html', {})
 
 def dasbor(request):
-    return render(request, 'accounts/templates/dashboard.html', locals())
+    return render(request, 'accounts/templates/dashboard.html')
 
 
