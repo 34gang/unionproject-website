@@ -3,10 +3,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<head>
+    <script src="jquery-3.4.1.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<head>
+
     <title>Union Project</title>
     <style>
 
@@ -264,6 +266,12 @@ section {
 	font-size: 16px;
 }
 
+.fade {
+  margin: 50px;
+  padding: 50px;
+  background-color: lightgreen;
+  opacity: 1;
+}
 
 .action-sec{width:100%; float:left; background:#222}
 .action-box{float:left; width:100%; text-align:center;}
@@ -299,7 +307,7 @@ section {
       <h2><small>Union</small>Sebuah Asosiasi yang merupakan bagian dari 34</h2>
     </div>
         </div>
-            <div class="heading"> <i class="fa fa-history" aria-hidden="true"></i>
+            <div class="heading"> <i class="fa fa-history" aria-hidden="true" id="ya1"></i>
           <h3>Sejarah</h3>
           <p>Merupakan bagian dari 34, yang merupakan pecahan dari asosiasi yang bernama 3gp di Instagram. Asosiasi 3gp merupakan asosiasi
           senang-senang tanpa melakukan hal yang benar-benar produktif. Kebanyakan dari mereka merupakan shitposter, memer, dan sebagainya.
@@ -309,18 +317,18 @@ section {
         <div class="heading">
             <h1>Kegiatan</h1>
         </div>
-        <div class="heading"> <i class="fa fa-gamepad" aria-hidden="true"></i>
+        <div class="heading"> <i class="fa fa-gamepad" aria-hidden="true" id="ya2"></i>
           <h3>Produksi Game</h3>
             <p>Memang terdengar sulit dipercaya namun Union saat ini sedang memproduksi sebuah game Visual Novel, mulai dari
             yang sederhana dulu. Cabang dari produksi game ini adalah Zerostudios, yang juga merupakan bagian dari 34.
             Member dari Union boleh mengajukan diri untuk ikut dalam produksi.</p>
         </div>
-        <div class="heading"> <i class="fa fa-television" aria-hidden="true"></i>
+        <div class="heading"> <i class="fa fa-television" aria-hidden="true" id="ya3"></i>
           <h3>Gambar/Animasi/Seni Visual</h3>
             <p>Kegiatan Menggambar, membuat animasi, dan seni visual lainnya seperti mengedit merupakan hal yang juga
             akan dibahas disini. Para editor dan artist tentu bisa bertemu dan berbincang seputar topik seni visual mereka.</p>
         </div>
-        <div class="heading">
+        <div class="heading" id="ya4">
             <h1>Tertarik?</h1>
             <a href="{% url 'register_url' %}">
                 <button class="btn btn-aqua" type="button">Bergabung Sekarang!</button>
@@ -351,6 +359,24 @@ section {
     </div>
   </div>
 </section>
+<script>
+$(window).on("load",function() {
+  $(window).scroll(function() {
+    var windowBottom = $(this).scrollTop() + $(this).innerHeight();
+    $(".heading").each(function() {
+      /* Check the location of each desired element */
+      var objectBottom = $(this).offset().top + $(this).outerHeight();
+
+      /* If the element is completely within bounds of the window, fade it in */
+      if (objectBottom < windowBottom) { //object comes into view (scrolling down)
+        if ($(this).css("opacity")==0) {$(this).fadeTo(500,1);}
+      } else { //object goes out of view (scrolling up)
+        if ($(this).css("opacity")==1) {$(this).fadeTo(500,0);}
+      }
+    });
+  }).scroll(); //invoke scroll-handler on page-load
+});
+</script>
 
 </body>
 </html>
