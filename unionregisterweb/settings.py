@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'blog',
     'django_summernote',
-    'cuser',
 ]
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
@@ -57,7 +56,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'cuser.middleware.CuserMiddleware',
 ]
 
 ROOT_URLCONF = 'unionregisterweb.urls'
