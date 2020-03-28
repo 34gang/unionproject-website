@@ -12,7 +12,8 @@ class Post(models.Model):
     judul = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
-    TIPE = (('Cerita Pendek/Novel','Cerita Pendek/Novel'),
+    TIPE = (('Pemberitahuan/Pengumuman', 'Pemberitahuan/Pengumuman'),
+        ('Cerita Pendek/Novel','Cerita Pendek/Novel'),
               ('Edit/Video Musik', 'Edit/Video Musk'),
               ('Desain Grafis', 'Desain Grafis'),
               ('Art/Gambar', 'Art/Gambar'))
