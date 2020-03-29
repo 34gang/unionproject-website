@@ -137,9 +137,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, '/staticfiles/')
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
 MEDIA_URL = '/media/'
-STATICFILES_DIRS = [
-    '/home/mochida/PycharmProjects/unionregisterweb/static/'
-]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
