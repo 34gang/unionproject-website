@@ -133,12 +133,14 @@ MAX_UPLOAD_SIZE = "104857600"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, '/staticfiles/')
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static')
+]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 REGISTER_URL = '/register/'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
