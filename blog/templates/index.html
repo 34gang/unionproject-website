@@ -37,7 +37,8 @@
                 <div class="card-body">
                     <h2 class="card-title">{{ post.judul }}</h2>
                     <p class="card-text text-muted h6">{{ post.author }} | {{ post.Dibuat_Pada }} </p>
-                    <p class="card-text">{{ post.konten|slice:500 }}</p>
+                    <p class="card-text">{{ post.konten|truncatechars_html:300 }}</p>
+                    <p>---------------------</p>
                     <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Selengkapnya &rarr;</a>
                 </div>
             </div>
