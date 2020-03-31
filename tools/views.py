@@ -3,6 +3,8 @@ from pytube import YouTube
 import os.path
 from django.contrib import messages
 
+def index(request):
+    return render(request,'tools/templates/index.html')
 
 def download(request):
     try:
