@@ -15,13 +15,13 @@ def download(request):
             yt = YouTube(request.POST.get('link'))
             if url == "rendah":
                 try:
-                    yt.streams.filter(progressive=True).get_lowest_resolution().download(homedir + '/Downloads')
+                    yt.streams.filter(progressive=True).get_lowest_resolution().download(dirs)
                     messages.success(request, 'Video berhasil diunduh! (Kualitas Rendah)')
                 except:
                     messages.error(request,'Maaf, video dengan resolusi itu tidak ditemukan')
             else:
                 try:
-                    yt.streams.filter(progressive=True).get_highest_resolution().download(homedir + '/Downloads')
+                    yt.streams.filter(progressive=True).get_highest_resolution().download(dirs)
                     messages.success(request, 'Video berhasil diunduh!')
                 except:
                     messages.error(request,'Maaf Video gagal diunduh')
