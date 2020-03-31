@@ -9,5 +9,6 @@ urlpatterns = [
     path('', views.index, name="utama"),
     path('accounts/', include("accounts.urls")),
     path('bergabung/', accview.index, name="home"),
-    path('aktivitas/', include("blog.urls"))
+    path('aktivitas/', include("blog.urls")),
+    path('alat/',include('tools.urls'))
 ]

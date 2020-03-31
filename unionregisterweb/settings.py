@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'blog',
     'django_summernote',
+    'tools',
 ]
 
 

@@ -6,10 +6,18 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Login</title>
 <style>
-
+        .btn-aqua {
+	background: #0297FF;
+	color: #fff;
+}
+.btn-aqua:hover {
+	background: #10629b;
+	color: #fff;
+}
 body {
-                  background: url({% static 'bg3.jpeg' %}) no-repeat center center fixed;
-                -webkit-background-size: cover;
+
+    background: url({% static 'bg3.jpeg' %}) no-repeat center center fixed;
+    -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
@@ -64,7 +72,7 @@ body {
             <p><input type="text" name="username" placeholder="Nama Pengguna"></p>
 <label for="password">Password:</label>
             <p><input type="password" name="password" placeholder="Password"></p>
-<input type="submit" name="" value="Login">
+<input type="submit" name="" class="btn btn-default" value="Login">
 </form>
 </div>
   </div>

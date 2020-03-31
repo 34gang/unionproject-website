@@ -6,6 +6,14 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title>Daftar</title>
     <style>
+            .btn-aqua {
+	background: #0297FF;
+	color: #fff;
+}
+.btn-aqua:hover {
+	background: #10629b;
+	color: #fff;
+}
               body{background: url({% static 'bg11.jpeg' %}) no-repeat center center fixed;
                 -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -35,7 +43,7 @@
           {% csrf_token %}
               {{ user_form.as_p }}
               {{ profile_form.as_p }}
-          <input type="submit" name="" value="Register">
+          <input type="submit" name="" class="btn btn-default" value="Register">
         </form>
 
       {% endif %}
