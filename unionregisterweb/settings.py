@@ -86,7 +86,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'uniondb',
-        'USER': 'root',
+        'USER': 'mochida',
         'PASSWORD': 'AlMulk67'
     }
 }
