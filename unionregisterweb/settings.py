@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import django_heroku
+import socket
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -24,9 +25,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'c45bd47b6301fd89a399348d9a20cf6cdec1e25fdd3ca36b057d93e789d73e72'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
-ALLOWED_HOSTS = ['unionproject.herokuapp.com']
+if socket.gethostname() == "server_name":
+    DEBUG = False
+    ALLOWED_HOSTS = ["unionproject.herokuapp.com",]
+else:
+    DEBUG = True
+    ALLOWED_HOSTS = ["localhost", "127.0.0.1",]
 
 # Application definition
 
@@ -134,7 +139,6 @@ MAX_UPLOAD_SIZE = "104857600"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
 MEDIA_URL = '/media/'
@@ -142,7 +146,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,'static')
 ]
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-REGISTER_URL = '/register/'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 django_heroku.settings(locals())
