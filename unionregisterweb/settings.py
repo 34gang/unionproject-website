@@ -26,12 +26,9 @@ SECRET_KEY = 'c45bd47b6301fd89a399348d9a20cf6cdec1e25fdd3ca36b057d93e789d73e72'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-if socket.gethostname() == "server_name":
-    DEBUG = False
-    ALLOWED_HOSTS = ["unionproject.herokuapp.com",]
-else:
-    DEBUG = True
-    ALLOWED_HOSTS = ["localhost", "127.0.0.1",]
+DEBUG = False
+ALLOWED_HOSTS = ["unionproject.herokuapp.com",]
+
 
 # Application definition
 
