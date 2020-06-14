@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'blog',
     'django_summernote',
     'tools',
+    'letsencrypt',
 ]
 
 

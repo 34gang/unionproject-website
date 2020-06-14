@@ -10,5 +10,6 @@ urlpatterns = [
     path('accounts/', include("accounts.urls")),
     path('bergabung/', accview.index, name="home"),
     path('aktivitas/', include("blog.urls")),
-    path('alat/',include('tools.urls'))
+    path('alat/',include('tools.urls')),
+    path('.well-known/', include('letsencrypt.urls')),
 ]
