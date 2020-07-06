@@ -49,7 +49,7 @@
           {% if user.is_active %}
         <h3>Tinggalkan sebuah komen:</h3>
             <p>Berkomentar sebagai: <strong>{{ user }}</strong></p>
-        <form method="post" style="margin-top: 1.3em;">
+        <form id="com" method="post" style="margin-top: 1.3em;">
           {{ comment_form.as_p }}
           {% csrf_token %}
           <button type="submit" class="btn btn-primary  btn-lg">Kirim!</button>

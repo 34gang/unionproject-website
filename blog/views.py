@@ -1,4 +1,6 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
 from django.views import generic
 from .models import Post  # Comment
 from .forms import CommentForm
@@ -13,6 +15,10 @@ class PostList(generic.ListView):
 # class PostDetail(generic.DetailView):
 #     model = Post
 #     template_name = 'blog/templates/post_detail.html'
+
+class HttpRespone(object):
+    pass
+
 
 def post_detail(request, slug):
     template_name = 'blog/templates/post_detail.html'
@@ -29,6 +35,7 @@ def post_detail(request, slug):
             new_comment.post = post
             # Save the comment to the database
             new_comment.save()
+            comment_form = CommentForm()
     else:
         comment_form = CommentForm()
 
