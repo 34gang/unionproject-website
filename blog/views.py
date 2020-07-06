@@ -45,16 +45,19 @@ def post_detail(request, slug):
                                                 'comment_form': comment_form})
 
 def upload_form(request):
+    uploaded = False
     template_name = 'blog/templates/upload.html'
     if request.method == 'POST':
         upload_form = UploadForm(data=request.POST)
         if upload_form.is_valid():
             upload_form = upload_form.save()
+            uploaded = True
         else:
             return HttpRespone('Maaf! Silahkan coba lagi!')
     else:
         upload_form = UploadForm()
     return render(request, template_name, {
         'upload_form':upload_form,
+        'uploaded':uploaded,
     })
 

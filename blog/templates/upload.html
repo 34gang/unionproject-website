@@ -48,9 +48,23 @@ body {
 </style>
         <div class="container">
         <div style="text-align: center">
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form", method="post">
+                {% if uploaded %}
+            <div class="alert alert-success" role="alert">
+      Upload sukses!
+            </div>
+                    <button class="btn btn-aqua">
+                    <a href="{% url 'upload' %}">Upload Lagi</a>
+                    </button>
+            {% else %}
+            {% if user.is_active %}
+                {% csrf_token %}
             {{ upload_form.as_p }}
+          <input type="submit" name="" class="btn btn-default" value="Upload">
+            {% else %}
+            <h3>Silahkan login terlebih dahulu</h3>
+            {% endif %}
 </form>
-</div>
+        {% endif %}
   </div>
 {% endblock %}
