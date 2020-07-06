@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django_summernote.fields import SummernoteTextFormField, SummernoteTextField
 from django_userforeignkey.models.fields import UserForeignKey
 
 STATUS = (
@@ -18,7 +19,7 @@ class Post(models.Model):
               ('Desain Grafis', 'Desain Grafis'),
               ('Art/Gambar', 'Art/Gambar'))
     tipe = models.TextField(choices=TIPE, max_length=100)
-    konten = models.TextField()
+    konten = SummernoteTextField(default=None)
     Diperbarui_Pada = models.DateTimeField(auto_now= True)
     Dibuat_Pada = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)

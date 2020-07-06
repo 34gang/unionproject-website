@@ -1,10 +1,12 @@
 from . import views
+from .views import upload_form
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('', views.PostList.as_view(), name='posthome'),
+    path('upload/', upload_form, name='upload'),
     path('<slug:slug>/', views.post_detail, name='post_detail'),
     path('summernote/', include('django_summernote.urls')),
 ]
