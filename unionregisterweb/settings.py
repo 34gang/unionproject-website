@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'blog',
     'django_summernote',
     'tools',
-    'letsencrypt',
+    'rest_framework',
+    'django_userforeignkey'
 ]
 
 
@@ -59,7 +60,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django_userforeignkey.middleware.UserForeignKeyMiddleware',
 ]
+
+MIDDLEWARE_CLASSES = (
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django_userforeignkey.middleware.UserForeignKeyMiddleware'
+)
 
 ROOT_URLCONF = 'unionregisterweb.urls'
 
@@ -88,9 +95,9 @@ WSGI_APPLICATION = 'unionregisterweb.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'uniondb',
-        'USER': 'mochida',
-        'PASSWORD': 'AlMulk67'
+        'NAME': 'UNIONDB',
+        'USER': 'rahman',
+        'PASSWORD': 'AlMulk78'
     }
 }
 
@@ -135,7 +142,6 @@ CONTENT_TYPES = ['image', 'video']
 # 500MB - 429916160
 MAX_UPLOAD_SIZE = "104857600"
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = os.path.join(BASE_DIR,'/static/')
 MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')

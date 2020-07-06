@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-# Create your models here.
+from django_userforeignkey.models.fields import UserForeignKey
 
 STATUS = (
     (0, "Draft"),
@@ -11,7 +11,7 @@ STATUS = (
 class Post(models.Model):
     judul = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    author = models.ForeignKey(User, on_delete= models.CASCADE,related_name='blog_posts')
+    author = UserForeignKey(auto_user_add=True)
     TIPE = (('Pemberitahuan/Pengumuman', 'Pemberitahuan/Pengumuman'),
         ('Cerita Pendek/Novel','Cerita Pendek/Novel'),
               ('Edit/Video Musik', 'Edit/Video Musk'),
