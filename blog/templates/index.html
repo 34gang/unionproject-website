@@ -39,7 +39,7 @@
                     <p class="card-text text-muted h6">{{ post.author }} | {{ post.Dibuat_Pada }} </p>
                     <p class="card-text">{{ post.konten|truncatechars_html:300 }}</p>
                     <p>---------------------</p>
-                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Selengkapnya &rarr;</a>
+                    <a href="{% url 'post_detail' post.id  %}" class="btn btn-primary">Selengkapnya &rarr;</a>
                 </div>
             </div>
             {% endfor %}

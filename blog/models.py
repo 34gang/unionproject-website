@@ -11,7 +11,7 @@ STATUS = (
 
 class Post(models.Model):
     judul = models.CharField(max_length=200, unique=True)
-    slug = models.SlugField(max_length=200, unique=True)
+    id = models.AutoField(primary_key=True, editable=False, default=None)
     author = UserForeignKey(auto_user_add=True)
     TIPE = (('Pemberitahuan/Pengumuman', 'Pemberitahuan/Pengumuman'),
         ('Cerita Pendek/Novel','Cerita Pendek/Novel'),

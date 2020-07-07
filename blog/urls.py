@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.PostList.as_view(), name='posthome'),
     path('upload/', upload_form, name='upload'),
-    path('<slug:slug>/', views.post_detail, name='post_detail'),
+    path('<id>/', views.post_detail, name='post_detail'),
     path('summernote/', include('django_summernote.urls')),
 ]
 
