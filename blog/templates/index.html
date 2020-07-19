@@ -1,0 +1,51 @@
+{% extends 'templates/base.html' %} {% block body_block %} {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+
+.navbar .dropdown-menu a:hover {
+    color: #616161 !important;
+}
+    body {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        background: url({% static 'bg12.jpeg' %}) no-repeat center center fixed;
+                -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+    }
+
+
+    .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 mt-3 left">
+            {% autoescape off %}
+            {% for post in post_list %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title">{{ post.judul }}</h2>
+                    <p class="card-text text-muted h6">{{ post.author }} | {{ post.Dibuat_Pada }} </p>
+                    <p class="card-text">{{ post.konten|truncatechars_html:300 }}</p>
+                    <p>---------------------</p>
+                    <a href="{% url 'post_detail' post.id  %}" class="btn btn-primary">Selengkapnya &rarr;</a>
+                </div>
+            </div>
+            {% endfor %}
+        {% endautoescape %}
+        </div>
+        {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+    </div>
+</div>
+{%endblock%}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %} {% block body_block %} {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+    body{font-size: 18px;
+        background: url({% static 'bg14.jpeg' %}) no-repeat center center fixed;
+                -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+    }
+    </style>
+{% endblock %}
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <h1>{% block title %} {{ post.judul }} {% endblock title %}</h1>
+      <p class="text-muted">Kategori: {{ post.tipe }}</p>
+        <p class=" text-muted">Oleh: {{ post.author }} | {{ post.Dibuat_Pada }}</p>
+        <p class="card-text ">{{ post.konten | safe }}</p>
+      </div>
+    </div>
+    {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+ <div class="col-md-8 card mb-4  mt-3 ">
+      <div class="card-body">
+        <!-- comments -->
+        <h2>{{ comments.count }} Komentar</h2>
+
+        {% for comment in comments %}
+        <div class="comments" style="padding: 10px;">
+          <p class="font-weight-bold">
+
+            {{ comment.name }}
+            <span class=" text-muted font-weight-normal">
+              {{ comment.created_on }}
+            </span>
+          </p>
+          {{ comment.komentar | linebreaks }}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="col-md-8 card mb-4  mt-3 ">
+      <div class="card-body">
+          {% if user.is_active %}
+        <h3>Tinggalkan sebuah komen:</h3>
+            <p>Berkomentar sebagai: <strong>{{ user }}</strong></p>
+        <form id="com" method="post" style="margin-top: 1.3em;">
+          {{ comment_form.as_p }}
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary  btn-lg">Kirim!</button>
+            {% else %}
+                    <h3>Anda harus <a href="{% url 'login' %}">Login</a> untuk memposting komentar</h3>
+        {% endif %}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,79 @@
+{% extends 'templates/base.html' %}
+{% block body_block %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Dasbor {{ user }}</title>
+    <style>
+        body{
+                          background: url({% static 'bg13.jpeg' %}) no-repeat center center fixed;
+                -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+        }
+
+        .middle{
+            text-align: center;
+        }
+        .par {
+            font-size: 20px;
+        }
+        *[role="form"] {
+    max-width: 530px;
+    padding: 15px;
+    margin: 0 auto;
+    border-radius: 0.3em;
+    background-color: #f2f2f2;
+}
+
+*[role="form"] h2 {
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 5%;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;}
+    </style>
+</head>
+{% if user.is_authenticated %}
+    <title>{{ user }}</title>
+<body>
+<div class="container">
+    <div class="form-group">
+<form class="form-horizontal" role="form" method="POST">
+<h1>Halo, {{ user.userprofileinfo.Nama_Depan }} apa kabarmu?</h1>
+    <p>Nama Lengkap: {{ user.userprofileinfo.Nama_Depan }} {{ user.userprofileinfo.Nama_Belakang }}</p>
+    <p>Alamat Email: {{ user.userprofileinfo.Alamat_Email }}</p>
+    <p>Tanggal Lahir: {{ user.userprofileinfo.Tanggal_Lahir }}</p>
+    <p>Kota: {{ user.userprofileinfo.kota }}</p>
+    <p>Jenis Kelamin: {{ user.userprofileinfo.Jenis_Kelamin }}</p>
+    <p>Nomor HP: {{ user.userprofileinfo.Nomor_HP }}</p>
+    <p>Akun Instagram: {{ user.userprofileinfo.Akun_Instagram }}</p>
+    <p>Bio: {{ user.userprofileinfo.bio }}</p>
+    <p>Tanggal Bergabung: {{ user.date_joined }}</p>
+<div style="text-align: center">
+<a href="{% url 'utama' %}">
+    <button class="btn btn-default" type="button">Kembali</button>
+</a>
+</div>
+</form>>
+</div>
+</div>
+</body>
+    <body>
+    {% else %}
+    <div class="middle">
+    <h1>Anda Belum terdaftar</h1>
+    </div>
+    {% endif %}
+</body>
+        </html>
+{% endblock %}

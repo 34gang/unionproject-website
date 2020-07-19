@@ -1,0 +1,92 @@
+{% extends "templates/base.html" %}
+{% block body_block %}<div class="container"> {% load static %}
+        {% block main %}
+
+<!DOCTYPE html>
+<html lang="en">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+{% if user.is_authenticated %}
+    <head>
+    <style>
+        .center{
+              -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+            text-align: center;
+            font-size: 40px;
+            color: white;
+
+            font-family: 'Helvetica', sans-serif;
+        }
+    </style>
+        <title>Tentang</title>
+    </head>
+    <body>
+    <div class="center">
+        <form class="form-horizontal" role="form" method="POST">
+        <h1>Terima Kasih! Anda sudah login!</h1>
+        <p>Website sedang dalam pengembangan. Data diri anda hanya akan dimasukkan ke database terlebih dahulu</p>
+        <a href="{% url 'utama' %}">
+        <button type="button" class="btn btn-default">Kembali</button>
+            </a>
+        </form>
+        </div>
+    </body>
+{% else %}
+<head>
+    <meta charset="UTF-8">
+    <title>Daftar</title>
+    <style>
+        body {
+            background: url(/static/bg4.jpeg);
+        }
+        .container {
+            align-content: center;
+            display: flex;
+        }
+        .card-pricing.popular {
+    z-index: 1;
+              margin: auto;
+
+    background: rgba(000, 25, 54, 0.5);
+  width: 50%;
+  padding: 10px;
+    border: 3px solid #007bff;
+}
+.card-pricing .list-unstyled li {
+    padding: .5rem 0;
+    color: black;
+}
+
+    </style>
+</head>
+<body>
+
+
+
+        <div class="card card-pricing popular shadow text-center px-3 mb-4">
+            <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-primary text-white shadow-sm">Mengapa?</span>
+            <div class="bg-transparent card-header pt-4 border-0">
+                <h1 style="font-family: Arial, Helvetica, sans-serif">Alasan mengapa harus join Union?</h1>
+            </div>
+            <div class="card-body pt-0">
+                <ul class="list-unstyled mb-4">
+                    <li>Bertemu teman baru</li>
+                    <li>Bertemu dengan orang yang memiliki hobi yang sama</li>
+                    <li>Saling bersosialisasi</li>
+                    <li>Tidak kebosanan</li>
+                </ul>
+                <a href="{% url 'register_url' %}">
+                <button type="button" class="btn btn-primary">Daftar Sekarang!</button>
+                </a>
+            </div>
+        </div>
+
+</body>
+</html>
+{% endif %}
+{% endblock %}
+  </div>
+{% endblock %}

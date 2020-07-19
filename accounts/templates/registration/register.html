@@ -1,0 +1,52 @@
+{% extends "templates/base.html" %}
+{% load static %}{% block body_block %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Daftar</title>
+    <style>
+            .btn-aqua {
+	background: #0297FF;
+	color: #fff;
+}
+.btn-aqua:hover {
+	background: #10629b;
+	color: #fff;
+}
+              body{background: url({% static 'bg11.jpeg' %}) no-repeat center center fixed;
+                -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;}
+    </style>
+  <div class="container">
+    <div class="jumbotron">
+      {% if registered %}
+          <div style="text-align: center;color: black">
+        <h1>Terima Kasih telah mendaftar! Sekarang anda resmi menjadi bagian dari Union!</h1>
+              <p>Karena website ini masih dalam pengembangan, jadi untuk sekarang tidak ada kegiatan disini. Pendaftaran disini dibutuhkan hanya untuk menyimpan data anda pada database. Grup masih belum dibentuk hingga anggotanya banyak. Jadi tunggulah dlu sambil menikmati konten yang disajikan!</p>
+              <a  href="{% url 'utama' %}"><button class="btn btn-primary">Home</button></a>
+              <a  href="{% url 'dasbor' %}"><button class="btn btn-primary">Dasbor</button></a>
+          </div>
+          {% elif user.is_active %}
+          <div style="text-align: center">
+          <h1>Terima Kasih. Anda Telah Terdaftar</h1>
+          <a href="{% url 'utama' %}">
+              <button class="btn btn-default" type="button">Kembali</button>
+          </a>
+          </div>
+      {% else %}
+        <h1 style="text-align: center">Daftar</h1>
+        <h3 style="text-align: center">Isi data diri dengan benar</h3>
+          <form enctype="multipart/form-data" method="POST">
+          {% csrf_token %}
+              {{ user_form.as_p }}
+              {{ profile_form.as_p }}
+          <input type="submit" name="" class="btn btn-default" value="Register">
+        </form>
+
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

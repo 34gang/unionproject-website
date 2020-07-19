@@ -1,0 +1,70 @@
+{% extends 'templates/base.html' %} {% load static %}
+{% block body_block %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Login</title>
+<style>
+        .btn-aqua {
+	background: #0297FF;
+	color: #fff;
+}
+.btn-aqua:hover {
+	background: #10629b;
+	color: #fff;
+}
+body {
+
+    background: url({% static 'bg3.jpeg' %}) no-repeat center center fixed;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+        .middle{
+            text-align: center;
+        }
+        .par {
+            font-size: 20px;
+        }
+        *[role="form"] {
+    max-width: 1000px;
+    padding: 15px;
+    margin: 0 auto;
+    border-radius: 0.3em;
+    background-color: #f2f2f2;
+}
+
+*[role="form"] h2 {
+    font-family: 'Open Sans' , sans-serif;
+    font-size: 40px;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 5%;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 4px;}
+</style>
+        <div class="container">
+        <div style="text-align: center">
+        <form class="form-horizontal" role="form", method="post">
+                {% if uploaded %}
+            <div class="alert alert-success" role="alert">
+      Upload sukses!
+            </div>
+                    <button class="btn btn-aqua">
+                    <a href="{% url 'upload' %}">Upload Lagi</a>
+                    </button>
+            {% else %}
+            {% if user.is_active %}
+                {% csrf_token %}
+            {{ upload_form.as_p }}
+          <input type="submit" name="" class="btn btn-default" value="Upload">
+            {% else %}
+            <h3>Silahkan login terlebih dahulu</h3>
+            {% endif %}
+</form>
+        {% endif %}
+  </div>
+{% endblock %}

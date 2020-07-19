@@ -1,0 +1,60 @@
+{% extends 'base.html' %}{% block content %}{% load static %}
+    <head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .btn-aqua {
+	background: #0297FF;
+	color: #fff;
+}
+.btn-aqua:hover {
+	background: #10629b;
+	color: #fff;
+}
+              body{
+              background: url("{% static 'bg4.jpeg' %}") no-repeat center center fixed;
+                -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+          }
+        .gambar {
+            float: right;
+            width: 29.5%;
+        }
+    </style>
+    </head>
+    <body>
+    <img class="gambar" src="{% static 'fiona.png' %}" alt="fiona">
+<div class="container">
+    <div class="col-md-8 card mb-5  mt-7 left  top">
+      <div class="card-body">
+    <h2 style="text-align: center">Pengunduh Video Youtube Fiona</h2>
+    {% if messages %}
+      {% for message in messages %}
+        {% if message.tags == 'success' %}
+        <div class="alert alert-success">{{ message }}</div>
+              {% else %}
+              <div class="alert alert-danger">{{ message }}</div>
+          {% endif %}
+      {% endfor %}
+  {% endif %}
+    <form method="POST" class="post-form">{% csrf_token %}
+        <div class="form-group">
+        <label for="link">Masukkan Link Video Youtube</label>
+            <input id="link" type="url" class="form-control" required="required" name="link">
+            <label for="kualitas">Pilih Kualitas:</label>
+            <select id="kualitas" class="custom-select mr-sm-2" name="kualitas">
+                <option value="rendah">Rendah (240p-360p)</option>
+                <option value="tinggi">Tinggi (360p-1080p)</option>
+            </select>
+    </div>
+        <button type="submit" class="btn btn-default">Unduh!</button>
+    </form>
+</div>
+</div>
+  </div>
+    </body>
+{% endblock %}
