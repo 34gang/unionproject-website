@@ -106,13 +106,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+djangoenv
 
 # Spyder project settings
 .spyderproject
@@ -142,3 +136,5 @@ cython_debug/
 media
 static
 django-phonenumber-field
+
+.idea
