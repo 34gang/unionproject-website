@@ -12,7 +12,7 @@ django-phonenumber-field==4.0.0
 django-short-text-field==0.3.2
 django-summernote==0.8.11.6
 django-userforeignkey==0.3.0
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 gunicorn==20.0.4
 Markdown==3.2.1
 mysql-connector==2.2.9
